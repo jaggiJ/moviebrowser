@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = ({searchText, setSearchText}) => {
     const updateSearchText = (e) => {
         setSearchText(e.target.value)
+        
     }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

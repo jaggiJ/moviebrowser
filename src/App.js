@@ -11,6 +11,15 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [searchText, setSearchText] = useState('');
 
+  useEffect(() => {
+    console.log(searchText, 'is current searchText')
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=SECRETAPIKEY&query=${searchText}&page=1`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+  }, [searchText]
+  )
 
   return (
     <div>
