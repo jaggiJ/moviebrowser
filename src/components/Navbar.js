@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const Navbar = ({searchText, setSearchText}) => {
-    const updateSearchText = (e) => {
-        setSearchText(e.target.value)
-        
-    }
+const Navbar = ({ searchText, setSearchText }) => {
+  const history = useHistory();
+  const updateSearchText = (e) => {
+    history.push("/search");
+    setSearchText(e.target.value);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -42,7 +44,7 @@ const Navbar = ({searchText, setSearchText}) => {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              value={searchText}
+              value={searchText}    // ?Can be commented out without apparent effect 
               onChange={updateSearchText}
             />
             <button className="btn btn-outline-success" type="submit">
