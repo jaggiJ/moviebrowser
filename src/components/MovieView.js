@@ -21,7 +21,27 @@ const MovieView = () => {
       return <Hero text='Loading...' />
     }
     if(movieDetails) {
-      return <Hero text={movieDetails.original_title} />
+      const minImagePath = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+      const backDropImg = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`
+      return (
+        <>
+          <Hero text={movieDetails.original_title} backdrop={backDropImg} />
+          <div className='container my-5'>
+            <div className='row'>
+              <div className='col-md-3'>
+                <img src={minImagePath} alt="..." className='img-fluid rounded shadow'/>
+
+              </div>
+              <div className='col-md-9'>
+                <p>{movieDetails.overview}</p>
+              </div>
+
+            </div>
+
+          </div>
+        </>
+      )
+        
     }
   }
 

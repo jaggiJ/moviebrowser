@@ -10,7 +10,7 @@ const MovieCard = ({movie}) => {
         <img src={movieUrl} className="card-img-top" alt={movie.original_title} />
         <div className="card-body">
           <h5 className="card-title">{movie.original_title}</h5>
-          <p className="card-text">{movie.overview}</p>
+          {/* <p className="card-text">{movie.overview}</p> */}
           <Link to={detailUrl} className="btn btn-primary">Show details</Link>
         </div>
       </div>
