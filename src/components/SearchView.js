@@ -1,7 +1,9 @@
 import Hero from "./Hero";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({movie}) => {
   const movieUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  const detailUrl = `/movies/${movie.id}`
   return(
     <div className='col-lg-4 col-md-6 my-4'>
       <div className="card">
@@ -9,7 +11,7 @@ const MovieCard = ({movie}) => {
         <div className="card-body">
           <h5 className="card-title">{movie.original_title}</h5>
           <p className="card-text">{movie.overview}</p>
-          <a href="#" className="btn btn-primary">Details</a>
+          <Link to={detailUrl} className="btn btn-primary">Show details</Link>
         </div>
       </div>
     </div>
