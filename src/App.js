@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import AboutView from "./components/AboutView";
 import MovieView from "./components/MovieView";
 import SearchView from "./components/SearchView";
+import Error404 from "./components/Error404";
 import { Switch, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
@@ -41,6 +42,7 @@ function App() {
           <SearchView keyword={searchText} searchResult={searchResult} />
         </Route>
         <Route path='/movies/:id' component={MovieView} />
+        <Route path='*/:id2' component={Error404} />
       </Switch>
     </div>
   );
