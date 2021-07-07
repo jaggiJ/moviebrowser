@@ -36,7 +36,7 @@ const SearchView = ({ keyword, searchResult }) => {
     return <MovieCard movie={obj} key={i} />;
   });
   if (resultsHtml.length === 0) {
-    const text = `No results for ${keyword}`;
+    const text = `No results for " ${keyword} "`;
     return (
       <>
         <Hero text={text} />

@@ -40,16 +40,13 @@ const Navbar = ({ searchText, setSearchText }) => {
           </ul>
           <form className="d-flex">
             <input
-              className="form-control me-2"
+              className="form-control me-2 btn"
               type="search"
               placeholder="Search"
               aria-label="Search"
-              value={searchText}    // ?Can be commented out without apparent effect 
               onChange={updateSearchText}
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <button  className="btn btn-outline-success" type="reset" value="">Reset</button>
           </form>
         </div>
       </div>
