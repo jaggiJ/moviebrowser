@@ -20,7 +20,6 @@ const MovieCard = ({ movie }) => {
           alt="..."
         />
         <div className="card-body">
-          {console.log(movie)}
           <h5 className="card-title">{movie.original_title}</h5>
           <p className="card-text">{movie.release_date.substring(0,4)}, average: {movie.vote_average}</p>
           <Link to={detailUrl} className="btn btn-primary">
