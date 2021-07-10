@@ -6,7 +6,15 @@ import noResults from "../images/noResults.png";
 const MovieCard = ({ movie }) => {
   const movieUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const detailUrl = `/movies/${movie.id}`;
-
+  const releaseDate = () => {
+    if (movie.release_date) {
+      return movie.release_date.substring(0,4)
+      // return `'${movie.release_date.substring(0,4)}'`
+    } else {
+      return '- '
+    }
+  }
+  console.log(releaseDate)
   return (
     <div className="col-lg-4 col-md-6 my-4">
       <div className="card">
@@ -21,7 +29,7 @@ const MovieCard = ({ movie }) => {
         />
         <div className="card-body">
           <h5 className="card-title">{movie.original_title}</h5>
-          <p className="card-text">{movie.release_date.substring(0,4)}, average: {movie.vote_average}</p>
+          <p className="card-text">{releaseDate()}, average: {movie.vote_average}</p>
           <Link to={detailUrl} className="btn btn-primary">
             Show details
           </Link>
