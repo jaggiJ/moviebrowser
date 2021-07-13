@@ -6,7 +6,15 @@ const Navbar = ({ searchText, setSearchText }) => {
     history.push("/search");
     setSearchText(e.target.value);
   };
-
+  const navigateToHome = (e) => {
+    history.push("/");
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+  }
+    // custom form handling here
+  
+    
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <div className="container-fluid">
@@ -38,16 +46,16 @@ const Navbar = ({ searchText, setSearchText }) => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex">
+          <form onSubmit={onSubmit} value='' className="d-flex">
             <input
               autoFocus //only one element per page, causes focus 'in here' on page load
               className="form-control me-2 btn"
-              type="search"
+              type="text"
               placeholder="Search"
               aria-label="Search"
               onChange={updateSearchText}
             />
-              <button  className="btn btn-outline-success" type="reset" value="">Reset</button>
+            <button onClick={navigateToHome} className="btn btn-outline-success" type="reset" value="">Reset</button>
           </form>
         </div>
       </div>
