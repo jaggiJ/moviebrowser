@@ -40,13 +40,14 @@ const Navbar = ({ searchText, setSearchText }) => {
           </ul>
           <form className="d-flex">
             <input
+              autoFocus //only one element per page, causes focus 'in here' on page load
               className="form-control me-2 btn"
               type="search"
               placeholder="Search"
               aria-label="Search"
               onChange={updateSearchText}
             />
-            <button  className="btn btn-outline-success" type="reset" value="">Reset</button>
+              <button  className="btn btn-outline-success" type="reset" value="">Reset</button>
           </form>
         </div>
       </div>

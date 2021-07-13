@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./components/HomeView";
 import AboutView from "./components/AboutView";
 import MovieView from "./components/MovieView";
 import SearchView from "./components/SearchView";
@@ -13,12 +13,18 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [searchText, setSearchText] = useState('');
 
+  //when content of searchText changes effect below is triggered
   useEffect(() => {
-    if(searchText) {
+    // console.log(Boolean(searchText))
+    if(searchText.length >= 2) {
       fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc267a3d7338eb52a2fe8359129d2354&query=${searchText}&page=1`)
         .then(response => response.json())
         .then(data => {
-          setSearchResult(data.results)
+
+          //an array 'results', from within fetched data, is saved to searchResult
+          // console.log(data)
+          setSearchResult(data.results) 
+
         })
     }
   }, [searchText]

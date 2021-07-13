@@ -14,7 +14,6 @@ const MovieCard = ({ movie }) => {
       return '- '
     }
   }
-  console.log(releaseDate)
   return (
     <div className="col-lg-4 col-md-6 my-4">
       <div className="card">
@@ -44,35 +43,39 @@ const SearchView = ({ keyword, searchResult }) => {
     return <MovieCard movie={obj} key={i} />;
   });
 
-  if (resultsHtml.length === 0) {
+  if (resultsHtml.length === 0 && keyword.length >= 2) {
     // Shows placeholder image when no database image is present.
+    // Also when no search results, displays 'Oops no results'
     const text = `No results for " ${keyword} "`;
+    // console.log(' IF HAPPENED !')
     return (
       <>
         <Hero text={text} />
         <img
-          src={noResults}
+          src={noResults} //Oops image
           className="card-img-top"
-          onError={(e) => {
-            e.target.src = noImage;
-            e.target.onError = null;
-          }}
-          alt="..."
+          onError=
+            {(e) => {
+                e.target.src = noImage; //no image available image
+                e.target.onError = null;
+              }
+            }
+          alt="..." 
         />
       </>
     );
+  } else {
+    // console.log('ELSE HAPPENS!')
+    return (
+      <>
+        <Hero text={title} />
+        {resultsHtml && (
+          <div className="container">
+            <div className="row">{resultsHtml}</div>
+          </div>
+        )}
+      </>
+    );
   }
-
-  return (
-    <>
-      <Hero text={title} />
-      {resultsHtml && (
-        <div className="container">
-          <div className="row">{resultsHtml}</div>
-        </div>
-      )}
-    </>
-  );
-};
-
+}
 export default SearchView;
