@@ -9,7 +9,6 @@ const MovieCard = ({ movie }) => {
   const releaseDate = () => {
     if (movie.release_date) {
       return movie.release_date.substring(0,4)
-      // return `'${movie.release_date.substring(0,4)}'`
     } else {
       return '- '
     }
@@ -37,16 +36,16 @@ const MovieCard = ({ movie }) => {
     </div>
   );
 };
-const SearchView = ({ keyword, searchResult }) => {
-  const title = `Searching for ${keyword}`;
+const SearchView = ({ searchText, searchResult }) => {
+  const title = `Searching for ${searchText}`;
   const resultsHtml = searchResult.map((obj, i) => {
     return <MovieCard movie={obj} key={i} />;
   });
 
-  if (resultsHtml.length === 0 && keyword.length >= 2) {
+  if (resultsHtml.length === 0 && searchText.length >= 2) {
     // Shows placeholder image when no database image is present.
     // Also when no search results, displays 'Oops no results'
-    const text = `No results for " ${keyword} "`;
+    const text = `No results for " ${searchText} "`;
     // console.log(' IF HAPPENED !')
     return (
       <>

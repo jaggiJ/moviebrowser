@@ -1,6 +1,6 @@
 import { Link, useHistory } from "react-router-dom";
 
-const Navbar = ({ searchText, setSearchText }) => {
+const Navbar = ({setSearchText}) => {
   const history = useHistory();
   const updateSearchText = (e) => {
     history.push("/search");

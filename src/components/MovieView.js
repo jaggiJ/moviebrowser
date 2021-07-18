@@ -26,14 +26,20 @@ const MovieView = () => {
     if (movieDetails) {
       const minImagePath = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;
       const backDropImg = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
-      const genre = movieDetails.genres.map((obj, i) => {
-        return <li key={i}>{obj.name}</li>
-      });
-      const production_companies = movieDetails.production_companies.map((obj, i) => {
-        return <li key={i}>{obj.name}</li>
-      });
-    
-
+      let genre = "";
+      let production_companies = "";
+      if (movieDetails.genres) {
+        genre = movieDetails.genres.map((obj, i) => {
+          return <li key={i}>{obj.name}</li>;
+        });
+      }
+      if (movieDetails.production_companies) {
+        production_companies = movieDetails.production_companies.map(
+          (obj, i) => {
+            return <li key={i}>{obj.name}</li>;
+          }
+        );
+      }
       return (
         <>
           <Hero text={movieDetails.original_title} backdrop={backDropImg} />
@@ -46,20 +52,31 @@ const MovieView = () => {
                     e.target.src = noImage;
                     e.target.onError = null;
                   }}
-                  className="img-fluid rounded shadow" alt='...'
+                  className="img-fluid rounded shadow"
+                  alt="..."
                 />
               </div>
               <div className="col-md-9">
                 <code>
-                  Status: {movieDetails.status}<br />
-                  Release: {movieDetails.release_date}<br />
-                  Original_language: {movieDetails.original_language}<br/>
-                  Vote_average: {movieDetails.vote_average}<br />
-                  Vote_count: {movieDetails.vote_count}<br />
-                  Budget: {movieDetails.budget}<br />
-                  Revenue: {movieDetails.revenue}<br /><hr />
-                  Genres: {genre}<br />
-                  Production_companies: {production_companies}<br />
+                  Status: {movieDetails.status}
+                  <br />
+                  Release: {movieDetails.release_date}
+                  <br />
+                  Original_language: {movieDetails.original_language}
+                  <br />
+                  Vote_average: {movieDetails.vote_average}
+                  <br />
+                  Vote_count: {movieDetails.vote_count}
+                  <br />
+                  Budget: {movieDetails.budget}
+                  <br />
+                  Revenue: {movieDetails.revenue}
+                  <br />
+                  <hr />
+                  Genres: {genre}
+                  <br />
+                  Production_companies: {production_companies}
+                  <br />
                 </code>
                 <p>{movieDetails.overview}</p>
               </div>
